@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const ingredientSchema = new Schema({
 	name: {
 		type: String, 
-		trim: true // name="    Sugar "
+		trim: true // name="    Sugar " - the white spaces will be trimmed
 	},
 	created_at: {
 		type: Date,

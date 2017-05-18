@@ -7,30 +7,22 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-const authApi = require('./middleware/authApi');
+
+var mongoose = require('mongoose');
 
 var app = express();
 
 // database is called recipes
-var mongoose = require('mongoose');
-var url = 'mongodb://localhost/recipes';
-//var url = process.env.MONGOLAB_URI || 'mongodb://localhost/recipes'; 
+
+var url = 'mongodb://localhost/recipes'; 
+
+// var url = process.env.MONGOLAB_URI || 'mongodb://localhost/recipes'; 
 mongoose.connect(url);
 const { connection: db } = mongoose;
 
-// var jwt = require('jsonwebtoken');
-// var token = jwt.sign({ email: 'shouhei.yamauchi@live.com' }, 'secretcode');
-// console.log(token)
-
-
-
-// database is called recipes
-// mongoose.connect(process.env.RECIPES_DB);
-// const { connection: db } = mongoose;
-
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  console.log('connected to recipe database');
+	console.log('connected to recipe database')
 });
 
 // view engine setup
@@ -45,9 +37,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var middleware = require('./middleware/middleware')
-//app.use(middleware.mw)
-app.use('/api/*', authApi);
 app.use('/', index);
 app.use('/users', users);
 
