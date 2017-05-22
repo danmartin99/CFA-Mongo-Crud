@@ -13,8 +13,8 @@ var app = express();
 
 // database is called recipes
 var mongoose = require('mongoose');
-var url = 'mongodb://localhost/recipes';
-//var url = process.env.MONGOLAB_URI || 'mongodb://localhost/recipes'; 
+//var url = 'mongodb://localhost/recipes';
+var url = process.env.MONGOLAB_URI || 'mongodb://localhost/recipes'; 
 mongoose.connect(url);
 const { connection: db } = mongoose;
 
