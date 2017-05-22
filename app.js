@@ -18,9 +18,9 @@ var url = 'mongodb://localhost/recipes';
 mongoose.connect(url);
 const { connection: db } = mongoose;
 
-// var jwt = require('jsonwebtoken');
-// var token = jwt.sign({ email: 'shouhei.yamauchi@live.com' }, 'secretcode');
-// console.log(token)
+var jwt = require('jsonwebtoken');
+var token = jwt.sign({ email: 'shouhei.yamauchi@live.com' }, 'secretcode');
+console.log(token)
 
 
 
